@@ -2,58 +2,69 @@
 
 ## Objective
 
-To create a Spring Boot Web project using Maven, import it into Eclipse, configure the project, build it successfully, and execute the Spring Boot application.
+The objective of this hands-on exercise is to create a Spring Boot Web project using Maven, import the project into Eclipse IDE, build it successfully using Maven, and execute the Spring Boot application while verifying the application startup through logging.
 
 ---
 
-# Project Details
+## Software Requirements
 
-| Property     | Value         |
-| ------------ | ------------- |
-| Group Id     | com.cognizant |
-| Artifact Id  | spring-learn  |
-| Project Type | Maven         |
-| Language     | Java          |
-| Packaging    | Jar           |
-| Java Version | 8 or above    |
+- Java 8 or above
+- Eclipse IDE for Enterprise Java Developers
+- Apache Maven
+- Spring Boot
+- Internet Connection
 
 ---
 
-# Dependencies Added
+## Project Details
 
-The following dependencies were selected while creating the project using Spring Initializr:
-
-* Spring Boot DevTools
-* Spring Web
-
----
-
-# Step 1: Create Spring Boot Project
-
-Project created using **https://start.spring.io/** with the following configuration:
-
-* Group : com.cognizant
-* Artifact : spring-learn
-* Dependencies :
-
-  * Spring Boot DevTools
-  * Spring Web
+| Property | Value |
+|----------|-------|
+| Group Id | com.cognizant |
+| Artifact Id | spring-learn |
+| Project Type | Maven |
+| Packaging | Jar |
+| Language | Java |
+| Java Version | 8 |
 
 ---
 
-# Step 2: Build the Project
+## Dependencies Used
 
-Build Command:
+The following dependencies were selected while creating the project:
+
+- Spring Boot DevTools
+- Spring Web
+
+---
+
+## Step 1: Create Spring Boot Project
+
+Project created using **Spring Initializr**.
+
+Configuration:
+
+- Group Id : com.cognizant
+- Artifact Id : spring-learn
+- Dependencies:
+  - Spring Boot DevTools
+  - Spring Web
+
+---
+
+## Step 2: Build the Project
+
+Execute the following Maven command:
 
 ```bash
 mvn clean package -Dhttp.proxyHost=proxy.cognizant.com -Dhttp.proxyPort=6050 -Dhttps.proxyHost=proxy.cognizant.com -Dhttps.proxyPort=6050 -Dhttp.proxyUser=123456
 ```
 
-The Maven build downloads all required dependencies and generates the executable JAR file.
+This command downloads all required dependencies, compiles the source code, executes tests, and packages the application.
 
 ---
 
-# Step 3: Project Structure
+## Step 3: Project Structure
 
 ```text
 spring-learn
@@ -73,9 +84,7 @@ spring-learn
 
 ---
 
-# Step 4: Main Class
-
-## SpringLearnApplication.java
+## Step 4: SpringLearnApplication.java
 
 ```java
 package com.cognizant.springlearn;
@@ -89,8 +98,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringLearnApplication {
 
     private static final Logger LOGGER =
-            LoggerFactory.getLogger(
-                    SpringLearnApplication.class);
+            LoggerFactory.getLogger(SpringLearnApplication.class);
 
     public static void main(String[] args) {
 
@@ -105,55 +113,36 @@ public class SpringLearnApplication {
 
 ---
 
-# Explanation
+## Project Components
 
-## @SpringBootApplication
+### src/main/java
 
-The `@SpringBootApplication` annotation is a combination of:
+Contains the application's Java source code including controllers, services, repositories, models, and the main application class.
 
-* `@Configuration`
-* `@EnableAutoConfiguration`
-* `@ComponentScan`
-
-It enables auto configuration and starts the Spring Boot application.
-
----
-
-## src/main/java
-
-Contains all Java source files including controllers, services, repositories, and the main application class.
-
----
-
-## src/main/resources
+### src/main/resources
 
 Contains configuration files such as:
 
-* application.properties
-* static resources
-* templates
+- application.properties
+- static resources
+- templates
+
+### src/test/java
+
+Contains JUnit test classes for unit and integration testing.
+
+### pom.xml
+
+The pom.xml file is responsible for:
+
+- Managing project dependencies
+- Configuring Maven plugins
+- Defining project information
+- Managing the build lifecycle
 
 ---
 
-## src/test/java
-
-Contains JUnit test classes used for testing the application.
-
----
-
-## pom.xml
-
-The pom.xml file manages:
-
-* Project information
-* Maven dependencies
-* Plugins
-* Build lifecycle
-* Spring Boot starter dependencies
-
----
-
-# Important Dependencies
+## Important Dependencies
 
 ```xml
 <dependency>
@@ -169,25 +158,37 @@ The pom.xml file manages:
 
 ---
 
-# Dependency Hierarchy
+## Purpose of @SpringBootApplication
 
-```
+The @SpringBootApplication annotation combines the following annotations:
+
+- @Configuration
+- @EnableAutoConfiguration
+- @ComponentScan
+
+It automatically configures the Spring Boot application and scans for components.
+
+---
+
+## Dependency Hierarchy
+
+```text
 spring-boot-starter-web
-        │
-        ├── Spring MVC
-        ├── Spring Core
-        ├── Spring Beans
-        ├── Spring Context
-        ├── Jackson
-        ├── Tomcat Embedded Server
-        └── Logging Libraries
+│
+├── Spring MVC
+├── Spring Core
+├── Spring Beans
+├── Spring Context
+├── Jackson
+├── Embedded Tomcat
+└── Logging Libraries
 ```
 
 ---
 
-# Expected Output
+## Expected Output
 
-```
+```text
 :: Spring Boot ::
 
 Tomcat started on port(s): 8080 (http)
@@ -199,6 +200,17 @@ INFO  Inside main()
 
 ---
 
-# Result
+## Learning Outcome
 
-Successfully created a Spring Boot Web project using Maven, imported it into Eclipse, built the project successfully, and executed the application. The Spring Boot application started successfully with embedded Tomcat, and the main() method execution was verified using SLF4J logging.
+- Created a Spring Boot Web project using Spring Initializr.
+- Built the project successfully using Maven.
+- Imported the project into Eclipse IDE.
+- Understood the purpose of project folders and pom.xml.
+- Learned the role of the @SpringBootApplication annotation.
+- Verified successful application startup using SLF4J logging.
+
+---
+
+## Result
+
+Successfully created, configured, built, and executed a Spring Boot Web project using Maven. The application started successfully, and the execution of the main() method was verified through logging.
